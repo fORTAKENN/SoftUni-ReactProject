@@ -1,0 +1,61 @@
+:root {
+    --page-width: 60em;
+    --global-font-size: 15px;
+    --global-line-height: 1.4em;
+    --global-space: 10px;
+    --background-color: #222225;
+    --font-color: #e8e9ed;
+    --primary-color: #3919f0;
+    --secondary-color: #a3abba;
+    --textarea-border-color: #3f3f44;
+    --font-stack: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
+    --mono-font-stack: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
+}
+
+* {
+    box-sizing: border-box;
+    text-rendering: geometricPrecision;
+}
+
+body {
+    font-size: var(--global-font-size);
+    color: var(--font-color);
+    line-height: var(--global-line-height);
+    margin: 0;
+    font-family: var(--font-stack);
+    word-wrap: break-word;
+    background-color: var(--background-color);
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+    background: var(--code-bg-color);
+}
+
+div {
+    display: block;
+}
+
+.container {
+    max-width: var(--page-width);
+}
+
+.container,
+.container-fluid {
+    margin: 0 auto;
+    padding: 0 calc(var(--global-space) * 2);
+}
+
+a {
+    cursor: pointer;
+    color: #3919f0;
+    text-decoration: none;
+}
+
+blockquote, code, h1, h2, h3, h4, h5, h6, strong {
+    font-size: var(--global-font-size);
+    font-style: normal;
+    font-family: var(--font-stack);
+    color: var(--font-color);
+}
+
