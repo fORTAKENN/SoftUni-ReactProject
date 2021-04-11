@@ -1,9 +1,13 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { Link } from 'react-router-dom';
+
+import { AuthContext } from '../../App';
 
 import './Navbar.css';
 
-const Navbar = () => {
+const Navbar = props => {
+    const { username } = useContext(AuthContext);
+
     return (
         <nav className="nav-wrapper">
             <div className="container">
@@ -17,10 +21,13 @@ const Navbar = () => {
                     </Link>
 
                     <div className="nav-separator">|</div>
-
-                    <Link to="/dashboard" className="nav-link">
+        
+                    { username === '' ? <Link to="/login" className="nav-link">
                         Login
-                    </Link>
+                    </Link> : <Link to="/dashboard" className="nav-link">
+                        Dashboard
+                    </Link>}
+                    
                 </div>
             </div>
         </nav>

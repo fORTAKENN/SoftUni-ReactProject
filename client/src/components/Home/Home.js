@@ -46,6 +46,38 @@ const Home = props => {
             <h2>{isLogged ? `Welcome, ${username}!` : 'Note: You are not logged in. You will not be able to edit or delete anything you paste.'}</h2>
             
             <input placeholder="// Paste title" onChange={(e) => setTitle(e.target.value)} />
+            <select>
+                <option>
+                    JavaScript
+                </option>
+                <option>
+                    C#
+                </option>
+                <option>
+                    Java
+                </option>
+                <option>
+                    C++
+                </option>
+                <option>
+                    Python
+                </option>
+                <option>
+                    PHP
+                </option>
+                <option>
+                    Lua
+                </option>
+                <option>
+                    Pascal
+                </option>
+                <option>
+                    HTML
+                </option>
+                <option>
+                    CSS
+                </option>
+            </select>
 
             <textarea
                 placeholder="// Code pasting :P "

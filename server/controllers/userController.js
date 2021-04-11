@@ -2,6 +2,8 @@ const config = require('../config/config');
 const { User, Token } = require('../models');
 const { jwt } = require('../util');
 
+const bcrypt = require('bcrypt-nodejs');
+
 console.log(config.authCookie);
 
 module.exports = {
@@ -28,10 +30,31 @@ module.exports = {
                     }
                 });
         },
+
         login: (req, res, next) => {
+
+            const { username, password } = req.body;
+            User.findOne({ username: { $regex: new RegExp(username, "i") } })
+            .then(user => {
+                bcrypt.compare(password, user.password, (err, data) => {
+                    if (err) throw err;
+
+                    if (data) {   
+                        user.populate('Paste');
+                        const token = jwt.createToken({ id: user._id });
+                        return res.cookie(config.authCookie, token).status(200).send(user);
+                    } else {
+                        res.status(401).send('Invalid credentials!'); return;
+                    }
+                })
+            })
+            .catch(next);
+        },
+
+        login1: (req, res, next) => {
             const { username, password } = req.body;
 
-            console.log('[Request]' + ` ${username}:${password}`);
+            
 
             User.findOne({ username: { $regex: new RegExp(username, "i") } })
                 .then((user) => { return Promise.all([user, user.matchPassword(password)]) })

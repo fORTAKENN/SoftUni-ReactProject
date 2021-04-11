@@ -20,6 +20,7 @@ const AuthService = {
         .catch(err => console.error(err)); 
     },
     register: (data) => {
+        
         return fetch('http://localhost:8080/api/user/register', {
             method: 'POST',
             body: JSON.stringify(data),
